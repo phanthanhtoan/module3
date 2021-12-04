@@ -1,0 +1,36 @@
+Chuyển đổi ERD sang mô hình quan hệ
+1. Các thưc thể có trong mô hình ERD:
+- PHIEUXUAT
+- VATTU
+- PHIEUNHAP
+- DONDH
+- NHACC
+2. Các mối quan hệ giữa các thực thể
+a. Quan hệ n-n:
+- Giữa thực thể PHIEUXUAT và VATTU:
+PHIEUXUAT(SoPX,NgayXuat);
+VATTU(MaVTU,TenVTU);
+CHITIETPHIEUXUAT(SoPX,MaVTU,DGXuat,SLXuat);
+- Giữa thực thể VATTU và PHIEUNHAP:
+PHIEUNHAP(SoPN,NgayNhap);
+CHITIETPHIEUNHAP(SoPN,MaVTU,DGNhap,SLNhap);
+- Giữa VATTU và DONDH:
+DONDH(SoDH,NgayDH);
+CHITIETDONDATHANG(SoDH,MaVTU);
+b. Quan hệ 1-n:
+- Giữa thực thể DONDH và NHACC:
+DONDH(SoDH,NgayDH,MaNCC);
+NHACC(MaNCC,TenNCC,DiaChi,SĐT);
+3. Danh sách các bảng sau khi chuyển đổi xong
+PHIEUXUAT(SoPX,NgayXuat);
+VATTU(MaVTU,TenVTU);
+CHITIETPHIEUXUAT(SoPX,MaVTU,DGXuat,SLXuat);
+PHIEUNHAP(SoPN,NgayNhap);
+CHITIETPHIEUNHAP(SoPN,MaVTU,DGNhap,SLNhap);
+DONDH(SoDH,NgayDH);
+
+CHITIETDONDATHANG(SoDH,MaVTU);
+
+DONDH(SoDH,NgayDH,MaNCC);
+
+NHACC(MaNCC,TenNCC,DiaChi,SĐT);
