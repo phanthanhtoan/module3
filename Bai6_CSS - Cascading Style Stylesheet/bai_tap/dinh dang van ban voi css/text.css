@@ -1,0 +1,21 @@
+body{
+    padding: 20px;
+}
+.title{
+    border-bottom: 1px solid black;
+
+}
+p{
+    margin-top: -15px;
+}
+.text{
+    font-size: 14px;
+    font-family: sans-serif;
+    text-indent: 45px;
+    width: 630px;
+    justify-content: center;
+    line-height: 1.6;
+}
+a{
+    text-decoration: none;
+}

@@ -1,0 +1,259 @@
+* {
+
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    height: 50px;
+    width: 100px;
+}
+
+.foot {
+    width: 100%;
+    height: 50px;
+    background-color: #424242;
+    position: fixed;
+    bottom: 0px;
+    color: white;
+    text-align: center;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.left {
+    background-color: #CDCDCD;
+
+}
+
+.content {
+    background-color: white;
+}
+
+.right {
+
+    background-color: #CDCDCD;
+}
+
+.right ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.right li {
+    border: 1px solid black;
+    margin: 8px;
+    padding: 15px;
+    text-align: center;
+    list-style: none;
+    border-radius: 10px;
+
+}
+
+.right li a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #01579B;
+
+}
+
+.left ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.left li {
+    margin: 8px;
+    padding: 15px;
+    text-align: center;
+
+
+}
+
+.left li a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #01579B;
+
+}
+
+.head {
+    padding: 0;
+    margin: 0;
+}
+
+.menu {
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    background-color: #424242;
+}
+
+.menu ul, .menu li {
+
+
+    margin: 0;
+}
+
+.menu li {
+    justify-content: center;
+    position: relative;
+    float: left;
+    list-style: none;
+
+}
+
+.menu li a {
+
+    width: 100px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background-color: #424242;
+    color: white;
+}
+
+.menu ul ul li a {
+    width: 200px;
+    text-align: left;
+    padding-left: 10px;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.menu li a:hover {
+    transition: 0.75s;
+    background-color: red;
+}
+
+.menu ul ul {
+    position: absolute;
+    top: 50px;
+    left: 15px;
+    visibility: hidden;
+}
+
+.menu ul li:hover ul {
+    visibility: visible;
+}
+
+/*Màn hình điện thoại*/
+@media only screen and (max-width: 600px) {
+    [class*="col-"] {
+        width: 100%;
+        color: red;
+    }
+
+    .row {
+        text-align: center;
+
+    }
+}
+
+/*màn hinh ipad*/
+@media only screen and (min-width: 601px) {
+    .col-s-1 {
+        width: 8.33333%;
+    }
+
+    .col-s-2 {
+        width: 16.66667%;
+    }
+
+    .col-s-3 {
+        width: 25%;
+    }
+
+    .col-s-4 {
+        width: 33.33333%;
+    }
+
+    .col-s-5 {
+        width: 41.66667%;
+    }
+
+    .col-s-6 {
+        width: 50%;
+    }
+
+    .col-s-7 {
+        width: 58.33333%;
+    }
+
+    .col-s-8 {
+        width: 66.66667%;
+    }
+
+    .col-s-9 {
+        width: 75%;
+    }
+
+    .col-s-10 {
+        width: 83.33333%;
+    }
+
+    .col-s-11 {
+        width: 91.66667%;
+    }
+
+    .col-s-12 {
+        width: 100%;
+    }
+}
+
+/*Màn hình pc*/
+@media only screen and (min-width: 769px) {
+    .col-1 {
+        width: 8.33333%;
+    }
+
+    .col-2 {
+        width: 16.66667%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33333%;
+    }
+
+    .col-5 {
+        width: 41.66667%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33333%;
+    }
+
+    .col-8 {
+        width: 66.66667%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33333%;
+    }
+
+    .col-11 {
+        width: 91.66667%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}

@@ -1,0 +1,27 @@
+body{
+    font-family: sans-serif;
+    padding: 20px;
+}
+h2,h1{
+    color: lightgreen;
+}
+a{
+    position: relative;
+    padding-left:20px ;
+    display: flex;
+    line-height: 1.6;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+p{
+    padding: 20px;
+    position: absolute;
+    text-indent: 30px;
+    display: inline;
+}
+img{
+    width: 350px;
+    height: 500px;
+
+}
