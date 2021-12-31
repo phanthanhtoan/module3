@@ -20,10 +20,10 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void save( String ten, String ngaysinh, String diachi) {
+    public void save(String id, String ten, String ngaysinh, String diachi) {
         if(!ten.matches("^[A-Za-z ]{4,}$")) {
 
         }
-        iCustomerRepository.save( ten, ngaysinh, diachi);
+        iCustomerRepository.save(id, ten, ngaysinh, diachi);
     }
 }

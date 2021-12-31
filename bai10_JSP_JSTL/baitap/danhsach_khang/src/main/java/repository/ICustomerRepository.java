@@ -8,6 +8,6 @@ public interface ICustomerRepository {
     List<Customer> findAll();
 
     Customer findById(String id);
-    void save(String ten, String ngaysinh, String diachi);
+    void save(String id, String ten, String ngaysinh, String diachi);
 }
 

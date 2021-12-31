@@ -7,6 +7,8 @@
 </head>
 <body>
 <form method="post">
+    <p>ID:</p>
+    <input type="text" name="id" value="${customer.id}">
     <p>Tên:</p>
     <input type="text" name="ten" value="${customer.ten}">
     <p>Ngày sinh: </p>

@@ -5,6 +5,7 @@ import repository.ICustomerRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CustomerRepository implements ICustomerRepository {
 
@@ -24,7 +25,7 @@ public class CustomerRepository implements ICustomerRepository {
     public Customer findById(String id) {
         Integer temp = Integer.parseInt(id);
         for (Customer customer: customerList){
-            if (customer.getId().equals(temp)){
+            if (Objects.equals(customer.getId(), temp)){
                 return customer;
             }
         }
@@ -32,12 +33,12 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public void save(String id, String ten, String ngaysinh) {
+    public void save(String id, String ten, String ngaysinh, String diachi) {
         Integer temp = Integer.parseInt(id);
         for(Customer customer: customerList) {
-            if(customer.getId().equals(temp)) {
+            if(Objects.equals(customer.getId(), temp)) {
                 customer.setTen(ten);
-                customer.getNgaysinh(ngaysinh)
+                customer.setNgaysinh(ngaysinh);
             }
         }
     }

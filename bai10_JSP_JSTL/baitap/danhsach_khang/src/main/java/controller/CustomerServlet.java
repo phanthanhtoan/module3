@@ -23,10 +23,11 @@ public class CustomerServlet extends HttpServlet {
         }
         switch (action){
             case "update": {
+                String id = request.getParameter("id");
                 String ten = request.getParameter("ten");
                 String ngaysinh = request.getParameter("ngaysinh");
                 String diachi = request.getParameter("diachi");
-                iCustomerService.save(id, ten, ngaysinh);
+                iCustomerService.save(id, ten, ngaysinh, diachi);
                 response.sendRedirect("/customer");
             }
         }
