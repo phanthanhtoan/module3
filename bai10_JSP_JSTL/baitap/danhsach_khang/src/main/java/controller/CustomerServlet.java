@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "CustomerServlet", urlPatterns = {"/customer"})
+@WebServlet(name = "CustomerServlet", urlPatterns = {"/customer", ""})
 public class CustomerServlet extends HttpServlet {
     private ICustomerService iCustomerService = new CustomerService();
 
@@ -30,6 +30,14 @@ public class CustomerServlet extends HttpServlet {
                 iCustomerService.save(id, ten, ngaysinh, diachi);
                 response.sendRedirect("/customer");
             }
+            case "create": {
+//                String id = request.getParameter("id");
+//                String ten = request.getParameter("ten");
+//                String ngaysinh = request.getParameter("ngaysinh");
+//                String diachi = request.getParameter("diachi");
+//                String anh = request.getParameter("anh");
+//                String customer  = new Customer(Integer.parseInt(id), ten, ngaysinh, diachi, anh));
+            }
         }
     }
 
@@ -45,10 +53,13 @@ public class CustomerServlet extends HttpServlet {
                 request.setAttribute("customer", customer);
                 request.getRequestDispatcher("update_customer.jsp").forward(request, response);
             }
+            case "create": {
+                request.getRequestDispatcher("create_customer.jsp").forward(request,response);
+            }
             default: {
                 List<Customer> customerList = iCustomerService.findAll();
                 request.setAttribute("customerList", customerList);
-                request.getRequestDispatcher("/list_customer.jsp").forward(request, response);
+                request.getRequestDispatcher("list_customer.jsp").forward(request, response);
             }
         }
     }

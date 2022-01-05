@@ -3,10 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>List Student</title>
+    <title>List Customer</title>
 </head>
 <body>
-<h2>List Student</h2>
+<h2>List Customer</h2>
+<h3> <a href="/customer?action=create">Create new customer</a></h3>
 <table style="width: 700px" , border="1">
     <tr>
         <th>ID:</th>
@@ -23,6 +24,7 @@
             <th><c:out value="${customer.diachi}"></c:out></th>
             <th><c:out value="${customer.anh}"></c:out></th>
             <th><a href="/customer?action=update&id=${customer.id}">Update</a></th>
+            <th><a href="/customer?action=delete&id=${customer.id}">Delete</a></th>
         </tr>
     </c:forEach>
 </table>

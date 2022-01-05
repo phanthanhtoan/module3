@@ -12,9 +12,9 @@ public class CustomerRepository implements ICustomerRepository {
     private static List<Customer> customerList = new ArrayList<>();
 
     static{
-        customerList.add(new Customer(1,"Toan", "da nang","27/12/2000", "abc.png"));
-        customerList.add(new Customer(2,"Hieu", "Quang Nam","30/08/2000", "abc.png"));
-        customerList.add(new Customer(3,"Hung", "Quang Nam","08/11/2000", "abc.png"));
+        customerList.add(new Customer(1,"Toan", "27/12/2000","da nang", "abc.png"));
+        customerList.add(new Customer(2,"Hieu", "30/08/2000","Quang Nam", "abc.png"));
+        customerList.add(new Customer(3,"Hung","08/11/2000", "Quang Nam", "abc.png"));
     }
     @Override
     public List<Customer> findAll() {
@@ -39,6 +39,7 @@ public class CustomerRepository implements ICustomerRepository {
             if(Objects.equals(customer.getId(), temp)) {
                 customer.setTen(ten);
                 customer.setNgaysinh(ngaysinh);
+                customer.setDiachi(diachi);
             }
         }
     }

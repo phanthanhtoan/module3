@@ -26,4 +26,14 @@ public class CustomerService implements ICustomerService {
         }
         iCustomerRepository.save(id, ten, ngaysinh, diachi);
     }
+
+    @Override
+    public void create(Customer customer) {
+//        Customer customer1 =findById(customer.getId().toString());
+//        if (customer!=null){
+//            return false;
+//        }else {
+//            iCustomerRepository.create
+//        }
+    }
 }
