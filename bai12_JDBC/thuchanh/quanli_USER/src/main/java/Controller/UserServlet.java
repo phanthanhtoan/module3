@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "UserServlet", urlPatterns = "/users")
+@WebServlet(name = "UserServlet", urlPatterns = {"/users", ""})
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserDAO userDAO;

@@ -21,7 +21,7 @@
             <th>Ngày sinh: </th>
             <th>Địa chỉ: </th>
             <th>Ảnh: </th>
-            
+
         </tr>
     </table>
 </form>

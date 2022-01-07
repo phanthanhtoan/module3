@@ -7,15 +7,15 @@ public class Customer {
     private String diachi;
     private String anh;
 
+    public Customer() {
+    }
+
     public Customer(int id, String ten, String ngaysinh, String diachi, String anh) {
         this.id = id;
         this.ten = ten;
         this.ngaysinh = ngaysinh;
         this.diachi = diachi;
         this.anh = anh;
-    }
-
-    public Customer() {
     }
 
     public int getId() {
@@ -58,4 +58,3 @@ public class Customer {
         this.anh = anh;
     }
 }
-

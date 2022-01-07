@@ -9,5 +9,6 @@ public interface ICustomerRepository {
 
     Customer findById(String id);
     void save(String id, String ten, String ngaysinh, String diachi);
-}
 
+    void create_Customer(Customer customer);
+}

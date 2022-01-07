@@ -11,5 +11,6 @@ public interface ICustomerService {
     Customer findById(String id);
 
     void save(String id, String ten, String ngaysinh, String diachi);
-    void create(Customer customer);
+
+    boolean create_Customer(Customer customer);
 }

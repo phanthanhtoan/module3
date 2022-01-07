@@ -22,6 +22,24 @@ public class CustomerServlet extends HttpServlet {
             action = "";
         }
         switch (action){
+            case "create": {
+                String id = request.getParameter("id");
+                String ten = request.getParameter("ten");
+                String ngaysinh = request.getParameter("ngaysinh");
+                String diachi = request.getParameter("diachi");
+                String anh = request.getParameter("anh");
+                Customer customer  = new Customer(Integer.parseInt(id), ten, ngaysinh, diachi, anh);
+                if(iCustomerService.create_Customer(customer)){
+                    request.setAttribute("msg", "Thêm mới thành công");
+                    List<Customer> customerList = iCustomerService.findAll();
+                    request.setAttribute("customerList", customerList);
+                    request.getRequestDispatcher("list_customer.jsp").forward(request,response);
+                }else {
+                    request.setAttribute("msg", "Thêm mới thất bại");
+
+                    request.getRequestDispatcher("create_customer.jsp").forward(request,response);
+                }
+            }
             case "update": {
                 String id = request.getParameter("id");
                 String ten = request.getParameter("ten");
@@ -29,14 +47,6 @@ public class CustomerServlet extends HttpServlet {
                 String diachi = request.getParameter("diachi");
                 iCustomerService.save(id, ten, ngaysinh, diachi);
                 response.sendRedirect("/customer");
-            }
-            case "create": {
-//                String id = request.getParameter("id");
-//                String ten = request.getParameter("ten");
-//                String ngaysinh = request.getParameter("ngaysinh");
-//                String diachi = request.getParameter("diachi");
-//                String anh = request.getParameter("anh");
-//                String customer  = new Customer(Integer.parseInt(id), ten, ngaysinh, diachi, anh));
             }
         }
     }
@@ -47,14 +57,14 @@ public class CustomerServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
+            case "create": {
+                request.getRequestDispatcher("create_customer.jsp").forward(request,response);
+            }
             case "update": {
                 String id = request.getParameter("id");
                 Customer customer = iCustomerService.findById(id);
                 request.setAttribute("customer", customer);
                 request.getRequestDispatcher("update_customer.jsp").forward(request, response);
-            }
-            case "create": {
-                request.getRequestDispatcher("create_customer.jsp").forward(request,response);
             }
             default: {
                 List<Customer> customerList = iCustomerService.findAll();

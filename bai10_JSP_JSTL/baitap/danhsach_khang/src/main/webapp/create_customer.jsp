@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -7,6 +6,7 @@
 </head>
 <body>
 <h1>Create customer</h1>
+<p><a href="/customer">Back</a></p>
 <form action="" method="post">
     <p>ID:</p>
     <input type="text" name="id" >

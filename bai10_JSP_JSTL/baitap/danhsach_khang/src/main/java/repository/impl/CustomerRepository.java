@@ -43,4 +43,9 @@ public class CustomerRepository implements ICustomerRepository {
             }
         }
     }
+
+    @Override
+    public void create_Customer(Customer customer) {
+        customerList.add(customer);
+    }
 }
