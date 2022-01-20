@@ -2,25 +2,25 @@ create database jsp_furama;
 use jsp_furama;
 
 create table `position`(
-	position_id int auto_increment not null,
+	position_id int  not null,
     position_name varchar(45) not null,
     primary key(position_id)
 );
 
 create table `education_degree`(
-	education_degree_id int auto_increment not null,
+	education_degree_id int  not null,
     education_degree_name varchar(45) not null,
     primary key(education_degree_id)
 );
 
 create table `division`(
-	division_id int auto_increment not null,
+	division_id int  not null,
     division_name varchar(45) not null,
     primary key(division_id)
 );
 
 create table `role`(
-	role_id int auto_increment not null,
+	role_id int  not null,
     role_name varchar(45) not null,
     primary key(role_id)
 );
@@ -60,13 +60,13 @@ create table `employee`(
 );
 
 create table `customer_type`(
-	customer_type_id int auto_increment not null,
+	customer_type_id int  not null,
     customer_type_name varchar(45) not null,
     primary key(customer_type_id)
 );
 
 create table `customer`(
-	customer_id int auto_increment not null,
+	customer_id int auto_increment  not null,
     customer_type_id int,
     customer_name varchar(45) not null,
     customer_birthday date not null,
@@ -80,20 +80,20 @@ create table `customer`(
 );
 
 create table `service_type`(
-	service_type_id int auto_increment not null,
+	service_type_id int  not null,
     service_type_name varchar(45) not null,
     primary key(service_type_id)
 );
 
 create table `rent_type`(
-	rent_type_id int auto_increment not null,
+	rent_type_id int not null,
     rent_type_name varchar(45) not null,
     rent_type_cost double not null,
     primary key(rent_type_id)
 );
 
 create table `service`(
-	service_id int auto_increment not null,
+	service_id int not null,
     service_name varchar(45) not null,
     service_area int not null,
     service_cost double not null,
@@ -110,7 +110,7 @@ create table `service`(
 );
 
 create table `contract`(
-	contract_id int auto_increment not null,
+	contract_id int  not null,
     contract_start_date datetime not null,
     contract_end_date datetime not null,
     contract_deposit double not null,
@@ -125,7 +125,7 @@ create table `contract`(
 );
 
 create table `attach_service`(
-	attach_service_id int auto_increment not null,
+	attach_service_id int  not null,
     attach_service_name varchar(45) not null,
     attach_service_cost double not null,
     attach_service_unit int not null,
@@ -134,7 +134,7 @@ create table `attach_service`(
 );
 
 create table `contract_detail` (
-	contract_detail_id int auto_increment not null,
+	contract_detail_id int  not null,
     contract_id int,
     attach_service_id int,
     quantity int,
@@ -144,99 +144,101 @@ create table `contract_detail` (
 );
 
 
-insert into `position`(position_name) values
-('le tan'),
-('phuc vu'),
-('chuyen vien'),
-('giam sat'),
-('quan ly'),
-('giam doc');
+insert into `position` values
+(1,'le tan'),
+(2, 'phuc vu'),
+(3, 'chuyen vien'),
+(4,'giam sat'),
+(5, 'quan ly'),
+(6, 'giam doc');
 
-insert into `education_degree`(education_degree_name) values
-('trung cap'),
-('cao dang'),
-('dai hoc'),
-('sau dai hoc');
+insert into `education_degree` values
+(1,'trung cap'),
+(2,'cao dang'),
+(3,'dai hoc'),
+(4,'sau dai hoc');
 
-insert into `division`(division_name) values
-('sale – marketing'),
-('hanh chinh'),
-('phuc vu'),
-('quan ly');
+insert into `division` values
+(1,'sale – marketing'),
+(2,'hanh chinh'),
+(3,'phuc vu'),
+(4,'quan ly');
 
-insert into `role`(role_name) values
-('ROLE_ADMIN'),
-('ROLE_USER'),
-('ROLE_SHOP');
+insert into `role` values
+(1,'ROLE_ADMIN'),
+(2,'ROLE_USER'),
+(3,'ROLE_SHOP');
 
 insert into `user`(username,`password`) values
-('khoa','12345'),
-('khoa06','12345'),
-('minh','12345'),
-('tran','12345');
+('toan','12345'),
+('toan2','12345'),
+('toan3','12345'),
+('toan4','12345');
 
-insert into `user_role`(role_id,username) values
-(1,'khoa'),
-(2,'khoa06'),
-(3,'minh');
+insert into `user_role`values
+(1,'toan'),
+(2,'toan2'),
+(3,'toan3');
 
 insert into `employee`
-(employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone,employee_email,
-employee_address,position_id,education_degree_id,division_id,username) 
 values
-('Hoa Vo Khuyet1','2000-12-06','123123123456',10000000,'0357740063','khoa45@gmail.com','Da Nang',1,1,1,'khoa'),
-('Hoa Vo Khuyet2','2000-12-06','123123123456',10000000,'0357740063','khoa45@gmail.com','Da Nang',2,2,2,'khoa06'),
-('Hoa Vo Khuyet3','2000-12-06','123123123456',10000000,'0357740063','khoa45@gmail.com','Da Nang',3,3,3,'minh');
+(1, 'Phan Thanh Toàn','2000-12-27','123123123456',10000000,'0399885400','toan123@gmail.com','Da Nang',1,1,1,'toan'),
+(2, 'Đặng Văn Hiếu','2000-12-27','123123123789',10000000,'0399885400','toan1234@gmail.com','Da Nang',1,2,3,'toan3'),
+(3, 'Trương Tấn Hải','2000-12-27','123123123123',10000000,'0399885400','toan12345@gmail.com','Da Nang',2,2,2,'toan2'),
+(4, 'Trương Tấn Hải','2000-12-27','123123123123',10000000,'0399885400','toan12345@gmail.com','Da Nang',2,2,2,'toan2'),
+(5, 'Trương Tấn Hải','2000-12-27','123123123123',10000000,'0399885400','toan12345@gmail.com','Da Nang',2,2,2,'toan2'),
+(6, 'Trương Tấn Hải','2000-12-27','123123123123',10000000,'0399885400','toan12345@gmail.com','Da Nang',2,2,2,'toan2');
 
-insert into `customer_type`(customer_type_name) values
-('Diamond'),
-('Platinium'),
-('Gold'),
-('Silver'),
-('Member');
 
-insert into `customer`
-(customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,customer_address) 
-values
-(1,'Truong Tan Hai','1998-02-02',1,'123123123477','0957740069','hai@gmail.com','Da Nang'),
-(2,'Truong Tan Beo','1998-02-02',1,'923123123479','0997740069','hai1@gmail.com','Quang Ngai'),
-(2,'Truong Tan Beo','1998-02-02',1,'923123123470','0997740060','hai0@gmail.com','Quang Ngai'),
-(1,'Truong Tan Vui','1998-02-02',0,'723123123437','0657740059','hai2@gmail.com','Da Nang');
+insert into `customer_type` values
+(1,'Diamond'),
+(2,'Platinium'),
+(3,'Gold'),
+(4,'Silver'),
+(5,'Member');
 
-insert into `service_type`(service_type_name) values 
-('Villa'), 
-('House'), 
-('Room');
+insert into `customer`values
+(1,1,'Truong Tan Hai','1998-02-02',1,'123123123477','0957740069','hai@gmail.com','Da Nang'),
+(2,2,'Truong Tan Beo','1998-02-02',1,'923123123479','0997740069','hai1@gmail.com','Quang Ngai'),
+(3,2,'Truong Tan Beo','1998-02-02',1,'923123123470','0997740060','hai0@gmail.com','Quang Ngai'),
+(4,1,'Truong Tan Vui','1998-02-02',0,'723123123437','0657740059','hai2@gmail.com','Da Nang'),
+(5,1,'Truong Tan Vui','1998-02-02',0,'723123123437','0657740059','hai2@gmail.com','Da Nang'),
+(6,1,'Truong Tan Vui','1998-02-02',0,'723123123437','0657740059','hai2@gmail.com','Da Nang'),
+(7,1,'Truong Tan Vui','1998-02-02',0,'723123123437','0657740059','hai2@gmail.com','Da Nang');
 
-insert into `rent_type`(rent_type_name, rent_type_cost) values
-('Year', 105000), 
-('Month', 35000), 
-('Day', 25000),
-('Hour', 7984);
+insert into `service_type` values 
+(1,'Villa'), 
+(2,'House'), 
+(3,'Room');
 
-insert into `service`(service_name,service_area,service_cost,service_max_people,rent_type_id,service_type_id,
-standard_room,description_other_convenience,pool_area,number_of_floors) 
+insert into `rent_type` values
+(1,'Year', 105000), 
+(2,'Month', 35000), 
+(3,'Day', 25000),
+(4,'Hour', 7984);
+
+insert into `service`
 values 
-('Villa',50,100000,5,1,1,null,null,null,null),
-('House',50,100000,5,2,2,null,null,null,null),
-('House',50,100000,5,3,2,null,null,null,null),
-('Room',50,100000,5,4,3,null,null,null,null);
+(1,'Villa',50,100000,5,1,1,null,null,null,null),
+(2,'House',50,100000,5,2,2,null,null,null,null),
+(3,'House',50,100000,5,3,2,null,null,null,null),
+(4,'Room',50,100000,5,4,3,null,null,null,null);
 
-insert into `contract`(contract_start_date,contract_end_date,contract_deposit,contract_total_money,employee_id, customer_id,service_id) 
+insert into `contract` 
 values
-('2021-02-06', '2021-02-24', 5000000,10000000,1, 2, 1),
-('2021-02-06', '2021-02-24', 5000000,10000000,2, 1, 2),
-('2020-02-06', '2020-02-24', 5000000,10000000,3, 3, 3);
+(1,'2021-02-06', '2021-02-24', 5000000,10000000,1, 2, 1),
+(2,'2021-02-06', '2021-02-24', 5000000,10000000,2, 1, 2),
+(3,'2020-02-06', '2020-02-24', 5000000,10000000,3, 3, 3);
 
 
 
-insert into `attach_service`(attach_service_name, attach_service_cost, attach_service_unit, attach_service_status) values
-('massage', 500000, 1000, 'full'),
-('karaoke', 500000, 1000, 'full'),
-('thuc an', 500000, 1000, 'full'),
-('nuoc uong', 500000, 1000, 'full'),
-('thue xe', 500000, 1000, 'still');
+insert into `attach_service` values
+(1,'massage', 500000, 1000, 'full'),
+(2,'karaoke', 500000, 1000, 'full'),
+(3,'thuc an', 500000, 1000, 'full'),
+(4,'nuoc uong', 500000, 1000, 'full'),
+(5,'thue xe', 500000, 1000, 'still');
 
-insert into `contract_detail`(contract_id,attach_service_id,quantity) values
-(1,3,2),
-(2,3,3);
+insert into `contract_detail` values
+(1,1,3,2),
+(2,2,3,3);

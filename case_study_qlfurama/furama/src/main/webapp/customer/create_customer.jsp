@@ -5,10 +5,11 @@
 </head>
 <body>
 <h2>Create Customer</h2>
+<a href="/customers">Back</a>
 <p style="color: greenyellow">${msg}</p>
 <form method="post">
     <p>Mã  KH</p>
-    <input type="text" name="customer_id">
+    <input type="text" name="customer_id" >
     <p>Mã loại KH</p>
     <input type="text" name="customer_type_id">
     <p>Tên khách hàng</p>

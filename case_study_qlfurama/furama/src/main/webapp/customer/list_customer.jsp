@@ -21,13 +21,13 @@
             <input type="submit" value="Search">
         </form>
         <button class="btn btn-info">
-            <a href="/customers?action=create">Create Customer</a>
+            <a href="/customers?action=create" style="color:black;">Create Customer</a>
         </button>
         <table class="table table-striped table-bordered" id="tableCustomer">
             <thead>
             <tr>
                 <th scope="col">Mã KH</th>
-                <th scope="col">mã loại KH</th>
+                <th scope="col">Mã loại KH</th>
                 <th scope="col">Tên KH</th>
                 <th scope="col">Ngày sinh</th>
                 <th scope="col">Giới tính</th>
@@ -53,10 +53,10 @@
                     <td>
                         <button class="btn btn-info">
                             <a style="color: black"
-                               href="/customers?action=edit&id=${customer.customer_id}">Edit</a>
+                               href="/customers?action=edit&customer_id=${customer.customer_id}">Edit</a>
                         </button>
                         <button class="btn btn-danger">
-                            <a style="color: black" href="/customers?action=edit&id=${customer.customer_id}">Delete</a>
+                            <a style="color: black" href="/customers?action=delete&id=${customer.customer_id}">Delete</a>
                         </button>
                     </td>
                 </tr>
@@ -74,7 +74,7 @@
         $('#tableCustomer').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
-            "pageLength": 3
+            "pageLength": 4
         });
     });
 </script>

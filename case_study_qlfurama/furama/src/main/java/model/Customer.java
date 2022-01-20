@@ -26,17 +26,6 @@ public class Customer {
         this.customer_address = customer_address;
     }
 
-    public Customer(int customer_type_id, String customer_name, String customer_birthday, String customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address) {
-        this.customer_type_id = customer_type_id;
-        this.customer_name = customer_name;
-        this.customer_birthday = customer_birthday;
-        this.customer_gender = customer_gender;
-        this.customer_id_card = customer_id_card;
-        this.customer_phone = customer_phone;
-        this.customer_email = customer_email;
-        this.customer_address = customer_address;
-    }
-
     public int getCustomer_id() {
         return customer_id;
     }
