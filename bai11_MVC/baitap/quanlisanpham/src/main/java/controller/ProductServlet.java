@@ -204,7 +204,7 @@ public class ProductServlet extends HttpServlet {
         Product product = this.productService.findById(id);
         RequestDispatcher dispatcher;
         if (product == null) {
-            dispatcher = request.getRequestDispatcher("error_404.jsp");
+            dispatcher  = request.getRequestDispatcher("error_404.jsp");
         } else {
             request.setAttribute("product", product);
             dispatcher = request.getRequestDispatcher("product/edit.jsp");
