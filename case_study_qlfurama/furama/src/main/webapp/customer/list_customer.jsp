@@ -26,6 +26,7 @@
         <table class="table table-striped table-bordered" id="tableCustomer">
             <thead>
             <tr>
+                <th scope="col">STT</th>
                 <th scope="col">Mã KH</th>
                 <th scope="col">Mã loại KH</th>
                 <th scope="col">Tên KH</th>
@@ -39,8 +40,9 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="customer" items="${customerList}">
+            <c:forEach varStatus="loop" var="customer" items="${customerList}">
                 <tr>
+                    <td>${loop.count}</td>
                     <td>${customer.customer_id}</td>
                     <td>${customer.customer_type_id}</td>
                     <td>${customer.customer_name}</td>

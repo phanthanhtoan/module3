@@ -11,7 +11,7 @@
     <div class="container-fluid">
         <div class="row bg-white p-lg-5">
             <div class="col-lg-12">
-                <h3 class="text-center">Thêm khách hành</h3>
+                <h3 class="text-center">Thêm nhân viên</h3>
                 <form method="post">
                     <div class="form-group">
                         <lable for="employee_id">Mã nhân viên: </lable>

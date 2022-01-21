@@ -10,8 +10,8 @@
 <body>
 <h2>List of Employee</h2>
 <p>
-    <c:if test='${message != null}'>
-        <span class="message" style="color: green">${message}</span>
+    <c:if test='${msg != null}'>
+        <span class="message" style="color: green">${msg}</span>
     </c:if>
 </p>
 <div class="container-fluid">
@@ -26,6 +26,7 @@
         <table class="table table-striped table-bordered" id="tableEmployee">
             <thead>
             <tr>
+                <th scope="col">STT</th>
                 <th scope="col">Mã nhân viên</th>
                 <th scope="col">Tên nhân viên</th>
                 <th scope="col">Ngày sinh</th>
@@ -44,8 +45,9 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="employee" items="${employeeList}">
+            <c:forEach varStatus="loop" var="employee" items="${employeeList}">
                 <tr>
+                    <td>${loop.count}</td>
                     <td>${employee.employee_id}</td>
                     <td>${employee.employee_name}</td>
                     <td>${employee.employee_birthday}</td>
@@ -54,14 +56,75 @@
                     <td>${employee.employee_phone}</td>
                     <td>${employee.employee_email}</td>
                     <td>${employee.employee_address}</td>
-                    <td>${employee.position_id}</td>
-                    <td>${employee.education_degree_id}</td>
-                    <td>${employee.division_id}</td>
+                        <%--                   <td>${employee.position_id}</td>--%>
+                    <td>
+                        <c:if test="${employee.position_id == 1}">
+                            Lễ tân
+                        </c:if>
+                        <c:if test="${employee.position_id == 2}">
+                            Phục vụ
+                        </c:if>
+                        <c:if test="${employee.position_id == 3}">
+                            Chuyên viên
+                        </c:if>
+                        <c:if test="${employee.position_id == 4}">
+                            Giám sát
+                        </c:if>
+                        <c:if test="${employee.position_id == 5}">
+                            Quản lí
+                        </c:if>
+                        <c:if test="${employee.position_id == 6}">
+                            Giám đốc
+                        </c:if>
+                    </td>
+
+                        <%--                    <td>--%>
+                        <%--                        <c:if test="${employee.position_id==0}">--%>
+                        <%--                            <span>null</span>--%>
+                        <%--                        </c:if>--%>
+                        <%--                        <c:forEach items="${positionList}" var="position">--%>
+                        <%--                            <c:if test="${employee.position_id==position.position_id}">--%>
+                        <%--                                <span>${position.position_name}</span>--%>
+                        <%--                            </c:if>--%>
+                        <%--                        </c:forEach>--%>
+                        <%--                    </td>--%>
+                        <%--                    <td>${employee.education_degree_id}</td>--%>
+                    <td>
+                        <c:if test="${employee.education_degree_id == 1}">
+                            Trung cấp
+                        </c:if>
+                        <c:if test="${employee.education_degree_id == 2}">
+                            Cao đẳng
+                        </c:if>
+                        <c:if test="${employee.education_degree_id == 3}">
+                            Đại học
+                        </c:if>
+                        <c:if test="${employee.education_degree_id == 4}">
+                            Sau đại học
+                        </c:if>
+
+                    </td>
+                        <%--                    <td>${employee.division_id}</td>--%>
+                    <td>
+                        <c:if test="${employee.division_id == 1}">
+                            Sale-mkt
+                        </c:if>
+                        <c:if test="${employee.division_id == 2}">
+                            Hành chính
+                        </c:if>
+                        <c:if test="${employee.division_id == 3}">
+                            Phục vụ
+                        </c:if>
+                        <c:if test="${employee.division_id == 4}">
+                            Quản lí
+                        </c:if>
+
+                    </td>
                     <td>${employee.username}</td>
                     <td>
                         <button class="btn btn-info">
                             <a style="color:black"
-                                    href="/employees?action=edit&employee_id=${employee.employee_id}">Edit</a>
+                               href="/employees?action=edit&employee_id=${employee.employee_id}">Edit</a>
                         </button>
                     </td>
                     <td>
@@ -85,7 +148,7 @@
         $('#tableEmployee').dataTable({
             "dom": 'lrtip',
             "lengthChange": false,
-            "pageLength": 3
+            "pageLength": 4
         });
     });
 </script>
