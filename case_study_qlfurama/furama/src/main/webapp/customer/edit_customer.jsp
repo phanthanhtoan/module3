@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Edit Customer</title>
     <link rel="stylesheet" href="/assert/bootstrap413/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assert/datatables/css/dataTables.bootstrap4.min.css">
 </head>
@@ -18,8 +18,20 @@
                         <input type="text" class="form-control" name="customer_id" value="${customer.customer_id}" readonly>
                     </div>
                     <div>
-                        <lable for="customer_type_id">Mã loại khách hàng: </lable>
-                        <input type="text" class="form-control" name="customer_type_id" value="${customer.customer_type_id}">
+                        <label for="customer_type_id">Loại khách hàng: </label>
+                        <select class="form-control" id="customer_type_id" name="customer_type_id" required>
+                            <c:forEach var="customerType" items="${customerTypeList}">
+                                <c:choose>
+                                    <c:when test="${customerType.customer_type_id == customerList.customer_type_id}">
+                                        <option value="${customerType.customer_type_name}">${customerType.customer_type_name}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="${customerType.customer_type_id}">${customerType.customer_type_name}</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </select>
+<%--                        <input type="text" class="form-control" name="customer_type_id" value="${customer.customer_type_id}">--%>
                     </div>
                     <div>
                         <lable for="customer_name">Tên khách hàng: </lable>
@@ -31,7 +43,11 @@
                     </div>
                     <div>
                         <lable for="customer_gender">Giới tính: </lable>
-                        <input type="text" class="form-control" name="customer_gender" value="${customer.customer_gender}">
+                        <select name="customer_gender" id="customer_gender" class="form-control">
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+<%--                        <input type="text" class="form-control" name="customer_gender" value="${customer.customer_gender}">--%>
                     </div>
                     <div>
                         <lable for="customer_id_card">Căn cước công dân: </lable>
@@ -55,7 +71,6 @@
                             <a href="/customers" class="text-white">Quay Lại</a>
                         </button>
                     </div>
-
                 </form>
             </div>
         </div>

@@ -44,16 +44,22 @@
                 <tr>
                     <td>${loop.count}</td>
                     <td>${customer.customer_id}</td>
-                    <td>${customer.customer_type_id}</td>
+                        <%--                <td>${customer.customer_type_id}</td>--%>
+                    <td>
+                        <c:if test="${customer.customer_type_id==0}">
+                            <span>null</span>
+                        </c:if>
+                        <c:forEach items="${customerTypeList}" var="customerType">
+                            <c:if test="${customer.customer_type_id==customerType.customer_type_id}">
+                                <span>${customerType.customer_type_name}</span>
+                            </c:if>
+                        </c:forEach>
+                    </td>
                     <td>${customer.customer_name}</td>
                     <td>${customer.customer_birthday}</td>
                     <td>
-                        <c:if test="${customer.customer_gender == 1}">
-                            Nam
-                        </c:if>
-                        <c:if test="${customer.customer_gender == 0}">
-                            Nữ
-                        </c:if>
+                        <c:if test="${customer.customer_gender == 1}">Nam</c:if>
+                        <c:if test="${customer.customer_gender == 0}">Nữ</c:if>
                     </td>
                     <td>${customer.customer_id_card}</td>
                     <td>${customer.customer_phone}</td>
@@ -64,20 +70,51 @@
                             <a style="color: black"
                                href="/customers?action=edit&customer_id=${customer.customer_id}">Edit</a>
                         </button>
-                        <button class="btn btn-danger">
-                            <a style="color: black" href="/customers?action=delete&id=${customer.customer_id}">Delete</a>
-                        </button>
+                                                    <button class="btn btn-danger">
+                                                        <a style="color: black"
+                                                           href="/customers?action=delete&id=${customer.customer_id}">Delete</a>
+                                                    </button>
+<%--                        <button type="button" class="btn btn-danger" onclick="setValueForm('${customer.customer_id}')"--%>
+<%--                                data-toggle="modal" data-target="#modalDelete">--%>
+<%--                            Xoá--%>
+<%--                        </button>--%>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
+
+        <%--        modal delete--%>
+<%--        <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
+<%--            <div class="modal-dialog">--%>
+<%--                <div class="modal-content">--%>
+<%--                    <form method="get" action="/customers?action=delete">--%>
+<%--                        <div class="modal-header">--%>
+<%--                            <h5 class="modal-title" id="exampleModalLabel">Thông Báo</h5>--%>
+<%--                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                                <span aria-hidden="true">&times;</span>--%>
+<%--                            </button>--%>
+<%--                        </div>--%>
+<%--                        <div class="modal-body">--%>
+<%--                            <input name="idDelete" id="idDelete" hidden>--%>
+<%--                            Bạn có chắc muốn xoá ?--%>
+<%--                        </div>--%>
+<%--                        <div class="modal-footer">--%>
+<%--                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>--%>
+<%--                            <button type="submit" class="btn btn-danger">Xoá</button>--%>
+<%--                        </div>--%>
+<%--                    </form>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
     </div>
 </div>
-<script src="assert/bootstrap/js/bootstrap.min.js"></script>
-<script src="assert/jquery/jquery-3.5.1.min.js"></script>
-<script src="assert/datatables/js/jquery.dataTables.min.js"></script>
-<script src="assert/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="/assert/jquery/jquery-3.5.1.min.js"></script>
+<script src="/assert/bootstrap413/js/popper.min.js"></script>
+<script src="/assert/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/assert/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="/assert/bootstrap413/js/bootstrap.min.js"></script>
+<script src="/assert/bootstrap413/js/bootstrap.bundle.js"></script>
 <script>
     $(document).ready(function () {
         $('#tableCustomer').dataTable({
@@ -87,5 +124,10 @@
         });
     });
 </script>
+<%--<script>--%>
+<%--    function setValueForm(idDelete) {--%>
+<%--        document.getElementById("idDelete").value = idDelete;--%>
+<%--    }--%>
+<%--</script>--%>
 </body>
 </html>

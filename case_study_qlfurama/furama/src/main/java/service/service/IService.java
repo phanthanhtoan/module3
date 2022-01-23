@@ -10,4 +10,5 @@ public interface IService {
     Service findById(int service_id);
     boolean createService(Service service);
     boolean deleteService(int service_id);
+    void editService(Service service);
 }

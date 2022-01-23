@@ -56,48 +56,77 @@
                     <td>${employee.employee_phone}</td>
                     <td>${employee.employee_email}</td>
                     <td>${employee.employee_address}</td>
-                    <td>${employee.position_id}</td>
-                        <%--                    <td>--%>
-                        <%--                        <c:if test="${employee.position_id==0}">--%>
-                        <%--                            <span>null</span>--%>
-                        <%--                        </c:if>--%>
-                        <%--                        <c:forEach items="${positionList}" var="position">--%>
-                        <%--                            <c:if test="${employee.position_id==position.position_id}">--%>
-                        <%--                                <span>${position.position_name}</span>--%>
-                        <%--                            </c:if>--%>
-                        <%--                        </c:forEach>--%>
-                        <%--                    </td>--%>
-                        <%--                    <td>${employee.education_degree_id}</td>--%>
+<%--                    <td>${employee.position_id}</td>--%>
                     <td>
-                        <c:if test="${employee.education_degree_id == 1}">
-                            Trung cấp
+                        <c:if test="${employee.position_id==0}">
+                            <span>null</span>
                         </c:if>
-                        <c:if test="${employee.education_degree_id == 2}">
-                            Cao đẳng
-                        </c:if>
-                        <c:if test="${employee.education_degree_id == 3}">
-                            Đại học
-                        </c:if>
-                        <c:if test="${employee.education_degree_id == 4}">
-                            Sau đại học
-                        </c:if>
+                        <c:forEach items="${positionList}" var="positionType">
+                            <c:if test="${employee.position_id==positionType.position_id}">
+                                <span>${positionType.position_name}</span>
+                            </c:if>
+                        </c:forEach>
+                    </td>
+<%--                    <td>--%>
+<%--                        <c:if test="${employee.education_degree_id == 1}">--%>
+<%--                            Trung cấp--%>
+<%--                        </c:if>--%>
+<%--                        <c:if test="${employee.education_degree_id == 2}">--%>
+<%--                            Cao đẳng--%>
+<%--                        </c:if>--%>
+<%--                        <c:if test="${employee.education_degree_id == 3}">--%>
+<%--                            Đại học--%>
+<%--                        </c:if>--%>
+<%--                        <c:if test="${employee.education_degree_id == 4}">--%>
+<%--                            Sau đại học--%>
+<%--                        </c:if>--%>
+<%--                    </td>--%>
 
+                    <td>
+                        <c:if test="${employee.education_degree_id==0}">
+                            <span>null</span>
+                        </c:if>
+                        <c:forEach items="${educationDegreeList}" var="educationDegreeType">
+                            <c:if test="${employee.education_degree_id==educationDegreeType.education_degree_id}">
+                                <span>${educationDegreeType.education_degree_name}</span>
+                            </c:if>
+                        </c:forEach>
                     </td>
                     <td>
-                        <c:if test="${employee.division_id == 1}">
-                            Sale-mkt
+                        <c:if test="${employee.division_id==0}">
+                            <span>null</span>
                         </c:if>
-                        <c:if test="${employee.division_id == 2}">
-                            Hành chính
-                        </c:if>
-                        <c:if test="${employee.division_id == 3}">
-                            Phục vụ
-                        </c:if>
-                        <c:if test="${employee.division_id == 4}">
-                            Quản lí
-                        </c:if>
-
+                        <c:forEach items="${divisionList}" var="divisionType">
+                            <c:if test="${employee.division_id==divisionType.division_id}">
+                                <span>${divisionType.division_name}</span>
+                            </c:if>
+                        </c:forEach>
                     </td>
+<%--                    <td>--%>
+<%--                        <c:if test="${employee.division_id==0}">--%>
+<%--                            <span>null</span>--%>
+<%--                        </c:if>--%>
+<%--                        <c:forEach items="${divisionList}" var="divisionType">--%>
+<%--                            <c:if test="${employee.division_id==divisionType.division_id}">--%>
+<%--                                <span>${divisionType.division_name}</span>--%>
+<%--                            </c:if>--%>
+<%--                        </c:forEach>--%>
+<%--                    </td>--%>
+
+<%--                    <td>--%>
+<%--                        <c:if test="${employee.division_id == 1}">--%>
+<%--                            Sale-mkt--%>
+<%--                        </c:if>--%>
+<%--                        <c:if test="${employee.division_id == 2}">--%>
+<%--                            Hành chính--%>
+<%--                        </c:if>--%>
+<%--                        <c:if test="${employee.division_id == 3}">--%>
+<%--                            Phục vụ--%>
+<%--                        </c:if>--%>
+<%--                        <c:if test="${employee.division_id == 4}">--%>
+<%--                            Quản lí--%>
+<%--                        </c:if>--%>
+<%--                    </td>--%>
                     <td>${employee.username}</td>
                     <td>
                         <button class="btn btn-info">

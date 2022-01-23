@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Create Employee</title>
@@ -45,17 +46,62 @@
                         <lable for="employee_address">Địa chỉ: </lable>
                         <input class="form-control" type="text" name="employee_address" >
                     </div>
-                    <div class="form-group">
-                        <lable  for="position_id"> Mã chức vụ: </lable>
-                        <input class="form-control" type="text" name="position_id">
+<%--                    <div class="form-group">--%>
+<%--                        <lable  for="position_id"> Mã chức vụ: </lable>--%>
+<%--                        <input class="form-control" type="text" name="position_id">--%>
+<%--                    </div>--%>
+                    <div>
+                        <label for="position_id">Chức vụ: </label>
+                        <select class="form-control" id="position_id" name="position_id" required>
+                            <c:forEach var="positionList" items="${positionList}">
+                                <c:choose>
+                                    <c:when test="${positionList.position_id == employeeList.position_id}">
+                                        <option value="${positionList.position_name}">${positionList.position_name}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="${positionList.position_id}">${positionList.position_name}</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <lable for="education_degree_id">Mã trình độ HV</lable>
-                        <input class="form-control" type="text" name="education_degree_id">
+                    <div>
+                        <label for="education_degree_id">Chức vụ: </label>
+                        <select class="form-control" id="education_degree_id" name="education_degree_id" required>
+                            <c:forEach var="educationDegreeList" items="${educationDegreeList}">
+                                <c:choose>
+                                    <c:when test="${educationDegreeList.education_degree_id == employeeList.education_degree_id}">
+                                        <option value="${educationDegreeList.education_degree_name}">${educationDegreeList.education_degree_name}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="${educationDegreeList.education_degree_id}">${educationDegreeList.education_degree_name}</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <lable  for="division_id">Phân công: </lable>
-                        <input class="form-control" type="text" name="division_id">
+<%--                    <div class="form-group">--%>
+<%--                        <lable for="education_degree_id">Mã trình độ HV</lable>--%>
+<%--                        <input class="form-control" type="text" name="education_degree_id">--%>
+<%--                    </div>--%>
+<%--                    <div class="form-group">--%>
+<%--                        <lable  for="division_id">Phân công: </lable>--%>
+<%--                        <input class="form-control" type="text" name="division_id">--%>
+<%--                    </div>--%>
+                    <div>
+                        <label for="division_id">Chức vụ: </label>
+                        <select class="form-control" id="division_id" name="division_id" required>
+                            <c:forEach var="divisionList" items="${divisionList}">
+                                <c:choose>
+                                    <c:when test="${divisionList.division_id == employeeList.division_id}">
+                                        <option value="${divisionList.division_name}">${divisionList.division_name}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="${divisionList.division_id}">${divisionList.division_name}</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </select>
                     </div>
                     <div class="form-group">
                         <lable for="username">Tài khoản: </lable>

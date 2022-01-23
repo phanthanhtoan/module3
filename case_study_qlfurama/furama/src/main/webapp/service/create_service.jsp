@@ -24,15 +24,15 @@
                         </div>
                         <div>
                             <lable for="service_area">Diện tích:</lable>
-                            <input class="form-control" type="text" name="service_area" required>
+                            <input class="form-control" type="number" name="service_area" required>
                         </div>
                         <div>
                             <lable for="service_cost">Chi phí: </lable>
-                            <input class="form-control" type="text" name="service_cost" required>
+                            <input class="form-control" type="number" name="service_cost" required>
                         </div>
                         <div>
                             <lable for="service_max_people">Sức chứa: </lable>
-                            <input class="form-control" type="text" name="service_max_people" required>
+                            <input class="form-control" type="number" name="service_max_people" required>
                         </div>
                         <div>
                             <lable for="rent_type_id">Mã thuê: </lable>
@@ -52,11 +52,11 @@
                         </div>
                         <div>
                             <lable for="pool_area">Diện tích hồ bơi: </lable>
-                            <input class="form-control" type="text" name="pool_area" required>
+                            <input class="form-control" type="number" name="pool_area" required>
                         </div>
                         <div>
                             <lable for="number_of_floors">Số tầng: </lable>
-                            <input class="form-control" type="text" name="number_of_floors" required>
+                            <input class="form-control" type="number" name="number_of_floors" required>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary">Create</button>

@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Líst Service</title>
+    <title>List Service</title>
     <link rel="stylesheet" href="assert/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assert/bootstrap413/css/bootstrap.min.css">
     <link rel="stylesheet" href="assert/datatables/css/dataTables.bootstrap4.min.css">
@@ -16,7 +16,7 @@
 </p>
 <div class="container-fluid">
     <div class="col-lg-12">
-        <form action="/searchCustomer" method="post">
+        <form action="/searchService" method="post">
             <input class="border border-warning rounded-pill" type="text" placeholder="Search" name="search">
             <input type="submit" value="Search">
         </form>
@@ -36,7 +36,7 @@
             <th scope="col">Tiêu chuẩn phòng</th>
             <th scope="col">Các DV khác</th>
             <th scope="col">Diện tích HB</th>
-            <th scope="col">Số tầng</th>
+            <th scope="col">Tầng số: </th>
             <th>
             <th scope="col"></th>
             </th>
@@ -51,7 +51,17 @@
                     <td>${service.service_cost}</td>
                     <td>${service.service_max_people}</td>
                     <td>${service.rent_type_id}</td>
-                    <td>${service.service_type_id}</td>
+<%--                    <td>${service.service_type_id}</td>--%>
+                    <td>
+                        <c:if test="${service.service_type_id==0}">
+                            <span>null</span>
+                        </c:if>
+                        <c:forEach items="${serviceTypeList}" var="serviceType">
+                            <c:if test="${service.service_type_id==serviceType.service_type_id}">
+                                <span>${serviceType.service_type_name}</span>
+                            </c:if>
+                        </c:forEach>
+                    </td>
                     <td>${service.standard_room}</td>
                     <td>${service.description_other_convenience}</td>
                     <td>${service.pool_area}</td>

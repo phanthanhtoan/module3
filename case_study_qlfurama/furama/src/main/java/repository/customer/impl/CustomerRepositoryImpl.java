@@ -29,7 +29,8 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
         List<Customer> customerList = new ArrayList<>();
         try {
 
-            PreparedStatement preparedStatement = this.baseRepository.getConnection().prepareStatement(SELECT_ALL_CUSTOMER);
+            PreparedStatement preparedStatement = this.baseRepository.getConnection()
+                    .prepareStatement(SELECT_ALL_CUSTOMER);
             ResultSet resultSet = preparedStatement.executeQuery();
             Customer customer;
             while (resultSet.next()) {
@@ -136,8 +137,8 @@ public class CustomerRepositoryImpl implements ICustomerRepository {
             preparedStatement.setString(8, customer.getCustomer_address());
             preparedStatement.setInt(9, customer.getCustomer_id());
             int num = preparedStatement.executeUpdate();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

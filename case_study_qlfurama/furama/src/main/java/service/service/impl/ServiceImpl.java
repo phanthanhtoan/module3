@@ -34,4 +34,12 @@ public class ServiceImpl implements IService {
     public boolean deleteService(int service_id) {
         return serviceRepository.deleteService(service_id);
     }
+
+    @Override
+    public void editService(Service service) {
+        if (!service.getService_name().matches("^[A-Za-z ]{4,}$")){
+
+        }
+        serviceRepository.editService(service);
+    }
 }

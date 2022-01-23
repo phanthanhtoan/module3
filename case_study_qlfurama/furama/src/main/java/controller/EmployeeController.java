@@ -1,10 +1,17 @@
 package controller;
 
-import model.Customer;
 import model.Employee;
+import service.division.IDivisionService;
+import service.division.impl.DivisionServiceImpl;
+import service.educationDegree.IEducationDegreeService;
+import service.educationDegree.impl.EducationDegreeServiceImpl;
 import service.employee.IEmployeeService;
 import service.employee.impl.EmployeeServiceImpl;
+import service.position.IPositionService;
+import service.position.impl.PositionServiceImpl;
 
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +23,14 @@ import java.util.List;
 
 @WebServlet(name = "EmployeeController", value = {"/employees", ""})
 public class EmployeeController extends HttpServlet {
-    private IEmployeeService iEmployeeService = new EmployeeServiceImpl();
+
+    private IEmployeeService employeeService = new EmployeeServiceImpl();
+
+    private IPositionService positionService = new PositionServiceImpl();
+
+    private IEducationDegreeService educationDegreeService = new EducationDegreeServiceImpl();
+
+    private IDivisionService divisionService = new DivisionServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -59,7 +73,11 @@ public class EmployeeController extends HttpServlet {
         String username = request.getParameter("username");
         Employee  employee = new Employee(employee_id,employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone,
                 employee_email,employee_address,position_id,education_degree_id,division_id,username);
-        iEmployeeService.editEmployee(employee);
+        employeeService.editEmployee(employee);
+        request.setAttribute("employeeList", employeeService.findAll());
+        request.setAttribute("positionList", positionService.findAll());
+        request.setAttribute("divisionList", divisionService.findAll());
+        request.setAttribute("educationDegreeList",educationDegreeService.findAll());
         response.sendRedirect("/employees");
     }
 
@@ -78,9 +96,12 @@ public class EmployeeController extends HttpServlet {
         String username = request.getParameter("username");
         Employee employee = new Employee(employee_id, employee_name, employee_birthday, employee_id_card, employee_salary,
                 employee_phone, employee_email, employee_address, position_id, education_degree_id, division_id, username);
-        if (iEmployeeService.createEmployee(employee)) {
+        if (employeeService.createEmployee(employee)) {
             request.setAttribute("msg", "Thêm mới thành công");
-            List<Employee> employeeList = iEmployeeService.findAll();
+            List<Employee> employeeList = employeeService.findAll();
+            request.setAttribute("positionList", positionService.findAll());
+            request.setAttribute("educationDegreeList",educationDegreeService.findAll());
+            request.setAttribute("divisionList", divisionService.findAll());
             request.setAttribute("employeeList", employeeList);
             request.getRequestDispatcher("employee/list_employee.jsp").forward(request, response);
         } else {
@@ -122,18 +143,21 @@ public class EmployeeController extends HttpServlet {
     }
 
     private void showEditFormEmployee(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        String employee_id = request.getParameter("employee_id");
-        Employee employee = iEmployeeService.findById(Integer.parseInt(employee_id));
+        String employee_id =request.getParameter("employee_id");
+        Employee employee = employeeService.findById(Integer.parseInt(employee_id));
+        request.setAttribute("positionList", positionService.findAll());
+        request.setAttribute("educationDegreeList",educationDegreeService.findAll());
+        request.setAttribute("divisionList", divisionService.findAll());
         request.setAttribute("employee", employee);
         request.getRequestDispatcher("employee/edit_employee.jsp").forward(request, response);
     }
 
     private void showFormDeleteEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        iEmployeeService.deleteEmployee(id);
+        employeeService.deleteEmployee(id);
         List<Employee> employeeList = null;
         try {
-            employeeList = iEmployeeService.findAll();
+            employeeList = employeeService.findAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -142,12 +166,19 @@ public class EmployeeController extends HttpServlet {
     }
 
     private void showCreateFormEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("positionList", positionService.findAll());
+        request.setAttribute("educationDegreeList",educationDegreeService.findAll());
+        request.setAttribute("divisionList", divisionService.findAll());
         request.getRequestDispatcher("employee/create_employee.jsp").forward(request, response);
     }
 
     private void showFormEmployee(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        List<Employee> employeeList = iEmployeeService.findAll();
-        request.setAttribute("employeeList", employeeList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("employee/list_employee.jsp");
+//        List<Employee> employeeList = EmployeeService.findAll();
+        request.setAttribute("employeeList", employeeService.findAll());
+        request.setAttribute("positionList", positionService.findAll());
+        request.setAttribute("educationDegreeList",educationDegreeService.findAll());
+        request.setAttribute("divisionList", divisionService.findAll());
         request.getRequestDispatcher("employee/list_employee.jsp").forward(request, response);
     }
 }
