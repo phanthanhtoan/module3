@@ -14,6 +14,17 @@ public class Customer {
     public Customer() {
     }
 
+//    public Customer(int customer_type_id, String customer_name, String customer_birthday, String customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address) {
+//        this.customer_type_id = customer_type_id;
+//        this.customer_name = customer_name;
+//        this.customer_birthday = customer_birthday;
+//        this.customer_gender = customer_gender;
+//        this.customer_id_card = customer_id_card;
+//        this.customer_phone = customer_phone;
+//        this.customer_email = customer_email;
+//        this.customer_address = customer_address;
+//    }
+
     public Customer(int customer_id, int customer_type_id, String customer_name, String customer_birthday, String customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address) {
         this.customer_id = customer_id;
         this.customer_type_id = customer_type_id;

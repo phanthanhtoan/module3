@@ -9,4 +9,5 @@ public interface IServiceRepository {
 
     Service findById(int service_id);
     void createService(Service service);
+    boolean deleteService(int service_id);
 }

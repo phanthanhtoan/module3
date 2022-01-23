@@ -9,6 +9,6 @@ public interface IEmployeeService {
     List<Employee> findAll() throws SQLException;
     Employee findById(int employee_id) throws SQLException;
     boolean createEmployee(Employee employee) throws SQLException;
-    //  boolean deleteCustomer(int customer_id);
-    boolean deleleteEmployee(int employee_id);
+    boolean deleteEmployee(int employee_id);
+     void editEmployee(Employee employee) throws SQLException;
 }

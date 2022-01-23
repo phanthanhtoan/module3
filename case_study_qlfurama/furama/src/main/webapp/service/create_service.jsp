@@ -3,7 +3,7 @@
 <head>
     <title>Create Service</title>
     <link rel="stylesheet" href="/assert/bootstrap413/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assert/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/assert/datatables/css/dataTables.bootstrap4 .min.css">
 </head>
 <body>
 <p style="color: greenyellow">${msg}</p>

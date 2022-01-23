@@ -32,7 +32,11 @@ public class EmployeeController extends HttpServlet {
                 }
                 break;
             case "edit":
-
+                try {
+                    editEmployee(request, response);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 break;
             case "search":
                 break;
@@ -40,27 +44,26 @@ public class EmployeeController extends HttpServlet {
 
     }
 
+    private void editEmployee(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int employee_id = Integer.parseInt(request.getParameter("employee_id"));
+        String employee_name = request.getParameter("employee_name");
+        String employee_birthday = request.getParameter("employee_birthday");
+        String employee_id_card = request.getParameter("employee_id_card");
+        Double employee_salary= Double.valueOf(request.getParameter("employee_salary"));
+        String employee_phone = request.getParameter("employee_phone");
+        String employee_email = request.getParameter("employee_email");
+        String employee_address = request.getParameter("employee_address");
+        int position_id = Integer.parseInt(request.getParameter("position_id"));
+        int education_degree_id = Integer.parseInt(request.getParameter("education_degree_id"));
+        int division_id = Integer.parseInt(request.getParameter("division_id"));
+        String username = request.getParameter("username");
+        Employee  employee = new Employee(employee_id,employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone,
+                employee_email,employee_address,position_id,education_degree_id,division_id,username);
+        iEmployeeService.editEmployee(employee);
+        response.sendRedirect("/employees");
+    }
+
     private void createEmployee(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        //  int customer_id = Integer.parseInt(request.getParameter("customer_id"));
-        //        int customer_type_id = Integer.parseInt(request.getParameter("customer_type_id"));
-        //        String customer_name = request.getParameter("customer_name");
-        //        String customer_birthday = request.getParameter("customer_birthday");
-        //        String customer_gender = request.getParameter("customer_gender");
-        //        String customer_id_card = request.getParameter("customer_id_card");
-        //        String customer_phone = request.getParameter("customer_phone");
-        //        String customer_email = request.getParameter("customer_email");
-        //        String customer_address = request.getParameter("customer_address");
-        //        Customer customer = new Customer(customer_id, customer_type_id, customer_name, customer_birthday, customer_gender, customer_id_card,
-        //                customer_phone, customer_email, customer_address);
-        //        if (iCustomerService.createCustomer(customer)) {
-        //            request.setAttribute("msg", "Thêm mới thành công");
-        //            List<Customer> customerList = iCustomerService.findAll();
-        //            request.setAttribute("customerList", customerList);
-        //            request.getRequestDispatcher("customer/list_customer.jsp").forward(request, response);
-        //        } else {
-        //            request.setAttribute("msg", "Thêm mới thất bại");
-        //            request.getRequestDispatcher("customer/create_customer.jsp").forward(request, response);
-        //        }
         int employee_id = Integer.parseInt(request.getParameter("employee_id"));
         String employee_name = request.getParameter("employee_name");
         String employee_birthday = request.getParameter("employee_birthday");
@@ -95,8 +98,13 @@ public class EmployeeController extends HttpServlet {
             case "create":
                 showCreateFormEmployee(request, response);
                 break;
-//            case "edit":
-
+            case "edit":
+                try {
+                    showEditFormEmployee(request, response);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                break;
             case "delete":
                 showFormDeleteEmployee(request, response);
                 break;
@@ -113,9 +121,16 @@ public class EmployeeController extends HttpServlet {
         }
     }
 
+    private void showEditFormEmployee(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        String employee_id = request.getParameter("employee_id");
+        Employee employee = iEmployeeService.findById(Integer.parseInt(employee_id));
+        request.setAttribute("employee", employee);
+        request.getRequestDispatcher("employee/edit_employee.jsp").forward(request, response);
+    }
+
     private void showFormDeleteEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        iEmployeeService.deleleteEmployee(id);
+        iEmployeeService.deleteEmployee(id);
         List<Employee> employeeList = null;
         try {
             employeeList = iEmployeeService.findAll();
@@ -123,7 +138,7 @@ public class EmployeeController extends HttpServlet {
             e.printStackTrace();
         }
         request.setAttribute("employeeList", employeeList);
-        request.getRequestDispatcher("employee/list_employee.jsp").forward(request,response);
+        request.getRequestDispatcher("employee/list_employee.jsp").forward(request, response);
     }
 
     private void showCreateFormEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -16,11 +16,25 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
     private BaseRepository baseRepository = new BaseRepository();
 
     private static final String SELECT_ALL_EMPLOYEE = "select * from employee";
-    private static final String SELECT_EMPLOYEE_BY_ID_SQL = "select *from employee where employee.employee_id?;";
-    private static final String CREATE_EMPLOYEE = "insert into employee(employee_name,employee_birthday,employee_id_card,employee_salary,employee_phone, \n" +
-            "employee_email,employee_address, position_id, education_degree_id, division_id, username ) \n" +
+
+    private static final String SELECT_EMPLOYEE_BY_ID_SQL = "select *from employee where employee.employee_id=?;";
+
+    private static final String CREATE_EMPLOYEE = "insert into employee(employee_name,employee_birthday,employee_id_card,employee_salary," +
+            "employee_phone,employee_email,employee_address, position_id, education_degree_id, division_id, username ) \n" +
             "value (?,?,?,?,?,?,?,?,?,?,?)";
+
     private static final String DELETE_EMPLOYEE ="delete from employee where employee.employee_id=?;";
+
+    private static final String UPDATE_EMPLOYEE = "update `employee` set employee_name =? , employee_birthday = ?, employee_id_card = ?, employee_salary = ?, employee_phone =?," +
+            "employee_email = ?, employee_address = ?, position_id = ?,education_degree_id = ?, division_id = ?, `username` = ? where employee_id = ?;";
+
+
+
+
+    //     private final String UPDATE_CUSTOMER = "update customer set customer_type_id = ?, customer_name =? , customer_birthday = ?," +
+    //            "customer_gender = ?,customer_id_card = ?,customer_phone = ?,customer_email = ?,customer_address = ?" +
+    //            " where customer_id = ?;"
+
     @Override
     public List<Employee> findAll() {
         List<Employee> employeeList = new ArrayList<>();
@@ -76,6 +90,7 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
                 employee.setUsername(resultSet.getString("username"));
                 break;
             }
+            return employee;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -105,7 +120,7 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
     }
 
     @Override
-    public boolean deleleteEmployee(int employee_id) {
+    public boolean deleteEmployee(int employee_id) {
         int row =0;
         PreparedStatement preparedStatement = null;
         try {
@@ -124,5 +139,28 @@ public class EmployeeRepositoryImpl implements IEmployeeRepository {
             e.printStackTrace();
         }
         return row>0;
+    }
+
+    @Override
+    public void editEmployee(Employee employee) {
+        try {
+            PreparedStatement preparedStatement = this.baseRepository.getConnection()
+                    .prepareStatement(UPDATE_EMPLOYEE);
+            preparedStatement.setString(1, employee.getEmployee_name());
+            preparedStatement.setString(2, employee.getEmployee_birthday());
+            preparedStatement.setString(3, employee.getEmployee_id_card());
+            preparedStatement.setDouble(4, employee.getEmployee_salary());
+            preparedStatement.setString(5, employee.getEmployee_phone());
+            preparedStatement.setString(6, employee.getEmployee_email());
+            preparedStatement.setString(7, employee.getEmployee_address());
+            preparedStatement.setInt(8, employee.getPosition_id());
+            preparedStatement.setInt(9, employee.getEducation_degree_id());
+            preparedStatement.setInt(10, employee.getDivision_id());
+            preparedStatement.setString(11, employee.getUsername());
+            preparedStatement.setInt(12, employee.getEmployee_id());
+            int num = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

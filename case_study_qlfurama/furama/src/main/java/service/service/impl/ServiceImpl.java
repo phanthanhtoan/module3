@@ -29,4 +29,9 @@ public class ServiceImpl implements IService {
             return true;
         }
     }
+
+    @Override
+    public boolean deleteService(int service_id) {
+        return serviceRepository.deleteService(service_id);
+    }
 }

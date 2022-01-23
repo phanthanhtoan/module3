@@ -21,14 +21,13 @@ public class CustomerServiceImpl implements ICustomerService {
         return customerRepository.findById(customer_id);
     }
 
-//    @Override
-//    public void save(int customer_id, int customer_type_id, String customer_name, String customer_birthday, String customer_gender, String customer_id_card, String customer_phone, String customer_email, String customer_address) throws SQLException {
-//        if (!customer_name.matches("^[A-Za-z ]{4,}$")) {
-//
-//        }
-//        customerRepository.save(customer_id, customer_type_id, customer_name, customer_birthday, customer_gender,
-//                customer_id_card, customer_phone, customer_email, customer_address);
-//    }
+    @Override
+    public void editCustomer(Customer customer) throws SQLException {
+        if (!customer.getCustomer_name().matches("^[A-Za-z ]{4,}$")) {
+
+        }
+        customerRepository.editCustomer(customer);
+    }
 
 
     @Override
@@ -44,6 +43,7 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Override
     public boolean deleteCustomer(int customer_id) {
+
         return customerRepository.deleteCustomer(customer_id);
     }
 

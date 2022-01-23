@@ -47,7 +47,14 @@
                     <td>${customer.customer_type_id}</td>
                     <td>${customer.customer_name}</td>
                     <td>${customer.customer_birthday}</td>
-                    <td>${customer.customer_gender}</td>
+                    <td>
+                        <c:if test="${customer.customer_gender == 1}">
+                            Nam
+                        </c:if>
+                        <c:if test="${customer.customer_gender == 0}">
+                            Nữ
+                        </c:if>
+                    </td>
                     <td>${customer.customer_id_card}</td>
                     <td>${customer.customer_phone}</td>
                     <td>${customer.customer_email}</td>

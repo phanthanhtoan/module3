@@ -1,5 +1,6 @@
 package controller;
 
+import model.Customer;
 import model.Service;
 import service.service.IService;
 import service.service.impl.ServiceImpl;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "ServiceController", value = {"/services"})
@@ -59,10 +61,23 @@ public class ServiceController extends HttpServlet {
         switch (action){
             case "create":
                 showFormCreateService(request,response);
+                break;
+            case "delete":
+                showFormServiceCustomer(request,response);
+                break;
             default:
                 showFormService(request, response);
                 break;
         }
+    }
+
+    private void showFormServiceCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        iService.deleteService(id);
+        List<Service> serviceList = null;
+        serviceList = iService.findAll();
+        request.setAttribute("serviceList", serviceList);
+        request.getRequestDispatcher("service/list_service.jsp").forward(request, response);
     }
 
     private void showFormCreateService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,7 +1,5 @@
 package repository.employee;
 
-
-
 import model.Employee;
 
 import java.sql.SQLException;
@@ -14,5 +12,6 @@ public interface IEmployeeRepository {
 
     void createEmployee(Employee employee) throws SQLException;
 
-    boolean deleleteEmployee(int employee_id);
+    boolean deleteEmployee(int employee_id);
+    void editEmployee(Employee employee);
 }

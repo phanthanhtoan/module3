@@ -56,28 +56,7 @@
                     <td>${employee.employee_phone}</td>
                     <td>${employee.employee_email}</td>
                     <td>${employee.employee_address}</td>
-                        <%--                   <td>${employee.position_id}</td>--%>
-                    <td>
-                        <c:if test="${employee.position_id == 1}">
-                            Lễ tân
-                        </c:if>
-                        <c:if test="${employee.position_id == 2}">
-                            Phục vụ
-                        </c:if>
-                        <c:if test="${employee.position_id == 3}">
-                            Chuyên viên
-                        </c:if>
-                        <c:if test="${employee.position_id == 4}">
-                            Giám sát
-                        </c:if>
-                        <c:if test="${employee.position_id == 5}">
-                            Quản lí
-                        </c:if>
-                        <c:if test="${employee.position_id == 6}">
-                            Giám đốc
-                        </c:if>
-                    </td>
-
+                    <td>${employee.position_id}</td>
                         <%--                    <td>--%>
                         <%--                        <c:if test="${employee.position_id==0}">--%>
                         <%--                            <span>null</span>--%>
@@ -104,7 +83,6 @@
                         </c:if>
 
                     </td>
-                        <%--                    <td>${employee.division_id}</td>--%>
                     <td>
                         <c:if test="${employee.division_id == 1}">
                             Sale-mkt

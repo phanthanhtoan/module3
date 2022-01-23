@@ -34,7 +34,15 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public boolean deleleteEmployee(int employee_id) {
-        return employeeRepository.deleleteEmployee(employee_id);
+    public boolean deleteEmployee(int employee_id) {
+        return employeeRepository.deleteEmployee(employee_id);
+    }
+
+    @Override
+    public void editEmployee(Employee employee) throws SQLException {
+        if (!employee.getEmployee_name().matches("\"^[A-Za-z ]{4,}$\""));{
+
+        }
+        employeeRepository.editEmployee(employee);
     }
 }

@@ -18,6 +18,8 @@ public class ServiceRepositoryImpl implements IServiceRepository {
     private static final String CREATRE_SERVICE = "insert into service(service_name, service_area, service_cost, service_max_people, rent_type_id,service_type_id,standard_room, description_other_convenience, pool_area, number_of_floors )\n" +
             "            value (?,?,?,?,?,?,?,?,?,?);";
 
+    private static final  String DELETE_SERVICE = "delete from service where service.service_id=?;";
+
     @Override
     public List<Service> findAll() {
         List<Service> serviceList = new ArrayList<>();
@@ -94,5 +96,27 @@ public class ServiceRepositoryImpl implements IServiceRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean deleteService(int service_id) {
+        int row = 0;
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = baseRepository.getConnection().prepareStatement(DELETE_SERVICE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            preparedStatement.setInt(1, service_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            row = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return row > 0;
     }
 }
