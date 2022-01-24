@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assert/datatables/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
-<h2>List of Employee</h2>
+<h2 class="text-center">List of Employee</h2>
 <p>
     <c:if test='${msg != null}'>
         <span class="message" style="color: green">${msg}</span>
@@ -20,8 +20,17 @@
             <input class="border border-warning rounded-pill" type="text" placeholder="Search" name="search">
             <input type="submit" value="Search">
         </form>
-        <button class="btn btn-info">
-            <a href="/employees?action=create" style="color: black">Create Employee</a>
+        <%--    HOME--%>
+        <button class="btn btn-danger" onclick="window.location.href='/home'">
+            <img src="home/img/house-door.svg" style="height: 25px; width: 25px">
+        </button>
+        <%--    CREATE--%>
+        <button class="btn btn-info" onclick="window.location.href='/employees?action=create'">
+            <img src="home/img/person_add.svg" style="height: 25px; width: 25px">
+        </button>
+        <%--    BACK--%>
+        <button class="btn btn-success" onclick="window.location.href='/employees'">
+            <img src="home/img/list.svg" style="height: 25px; width: 25px">
         </button>
         <table class="table table-striped table-bordered" id="tableEmployee">
             <thead>

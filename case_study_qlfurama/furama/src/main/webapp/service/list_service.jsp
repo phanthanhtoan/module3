@@ -20,8 +20,17 @@
             <input class="border border-warning rounded-pill" type="text" placeholder="Search" name="search">
             <input type="submit" value="Search">
         </form>
-        <button class="btn btn-info">
-            <a style="color: black" href="/services?action=create">Create Service</a>
+        <%--    HOME--%>
+        <button class="btn btn-danger" onclick="window.location.href='/home'">
+            <img src="home/img/house-door.svg" style="height: 25px; width: 25px">
+        </button>
+        <%--    CREATE--%>
+        <button class="btn btn-info" onclick="window.location.href='/services?action=create'">
+            <img src="home/img/person_add.svg" style="height: 25px; width: 25px">
+        </button>
+        <%--    BACK--%>
+        <button class="btn btn-success" onclick="window.location.href='/services'">
+            <img src="home/img/list.svg" style="height: 25px; width: 25px">
         </button>
         <table class="table table-striped table-bordered" id="tableService">
             <thead>

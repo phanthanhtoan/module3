@@ -11,21 +11,24 @@
 <p style="color: greenyellow">${msg}</p>
 <form method="post">
     <div class="container-fluid">
+        <button type="button" class="btn btn-success">
+            <a href="/customers" style="color: black">Quay lại</a>
+        </button>
         <div class="row bg-white p-lg-5">
             <div class="col-lg-12">
                 <h3 class="text-center">Thêm khách hàng: </h3>
                 <form method="post">
                     <div class="form-group">
                         <div>
-                            <lable for="customer_id">Mã khách hàng: </lable>
+                            <lable for="customer_id">Mã khách hàng:</lable>
                             <input type="text" class="form-control" name="customer_id" required>
                         </div>
-<%--                        <div>--%>
-<%--                            <lable for="customer_type_id">Mã loại khách hàng: </lable>--%>
-<%--                            <input type="text" class="form-control" name="customer_type_id" required>--%>
-<%--                        </div>--%>
+                        <%--                        <div>--%>
+                        <%--                            <lable for="customer_type_id">Mã loại khách hàng: </lable>--%>
+                        <%--                            <input type="text" class="form-control" name="customer_type_id" required>--%>
+                        <%--                        </div>--%>
                         <div>
-                            <lable for="customer_type_id">Mã loại khách hàng: </lable>
+                            <lable for="customer_type_id">Mã loại khách hàng:</lable>
                             <select class="form-control" id="customer_type_id" name="customer_type_id" required>
                                 <c:forEach var="customerTypeList" items="${customerTypeList}">
                                     <c:choose>
@@ -40,46 +43,54 @@
                             </select>
                         </div>
                         <div>
-                            <lable for="customer_name">Tên khách hàng: </lable>
+                            <lable for="customer_name">Tên khách hàng:</lable>
                             <input type="text" class="form-control" name="customer_name" required>
                         </div>
                         <div>
-                            <lable for="customer_birthday">Ngày sinh: </lable>
+                            <lable for="customer_birthday">Ngày sinh:</lable>
                             <input type="date" class="form-control" name="customer_birthday" required>
                         </div>
-<%--          cách 1              <div>--%>
-<%--                            <lable for="customer_gender">Giới tính: </lable>--%>
-<%--                            <input type="text" class="form-control" name="customer_gender" required>--%>
-<%--                 cách 2       </div>--%>
+                        <%--          cách 1              <div>--%>
+                        <%--                            <lable for="customer_gender">Giới tính: </lable>--%>
+                        <%--                            <input type="text" class="form-control" name="customer_gender" required>--%>
+                        <%--                 cách 2       </div>--%>
                         <div>
-                            <lable for="customer_gender">Giới tính: </lable>
-                            <select name="customer_gender" id="customer_gender" class="form-control" required>
-                                <option value="1">Nam</option>
-                                <option value="0">Nữ</option>
-                            </select>
+                            <lable for="customer_gender">Giới tính:</lable>
+<%--                            <input name="customer_gender" id="customer_gender" class="form-control" required>--%>
+<%--                            <select>--%>
+<%--                                <option value="1">Nam</option>--%>
+<%--                                <option value="0">Nữ</option>--%>
+<%--                            </select>--%>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input " type="radio" name="customer_gender" id="customer_gender1"
+                                       value="1">
+                                <label class="form-check-label" >Nam</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input " type="radio" name="customer_gender" id="customer_gender0"
+                                       value="0">
+                                <label class="form-check-label">Nữ</label>
+                            </div>
                         </div>
                         <div>
-                            <lable for="customer_id_card">Căn cước công dân: </lable>
-                            <input type="text" class="form-control" name="customer_id_card" >
+                            <lable for="customer_id_card">Căn cước công dân:</lable>
+                            <input type="text" class="form-control" name="customer_id_card">
                         </div>
                         <div>
-                            <lable for="customer_phone">Số điện thoại: </lable>
-                            <input type="text" class="form-control" name="customer_phone" >
+                            <lable for="customer_phone">Số điện thoại:</lable>
+                            <input type="text" class="form-control" name="customer_phone">
                         </div>
                         <div>
-                            <lable for="customer_email">Email: </lable>
-                            <input type="text" class="form-control" name="customer_email">
+                            <lable for="customer_email">Email:</lable>
+                            <input type="email" class="form-control" name="customer_email">
                         </div>
                         <div>
-                            <lable for="customer_address">Địa chỉ: </lable>
+                            <lable for="customer_address">Địa chỉ:</lable>
                             <input type="text" class="form-control" name="customer_address">
                         </div>
-                      <div>
-                          <button type="submit" class="btn btn-primary">Create</button>
-                          <button type="button" class="btn btn-success">
-                              <a href="/customers">Quay lại</a>
-                          </button>
-                      </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </div>
 
                     </div>
                 </form>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assert/datatables/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
-<h2>List of Customer</h2>
+<h2 class="text-center">List of Customer</h2>
 <p>
     <c:if test='${message != null}'>
         <span class="message" style="color: green">${message}</span>
@@ -16,13 +16,38 @@
 </p>
 <div class="container-fluid">
     <div class="col-lg-12">
-        <form action="/searchCustomer" method="post">
-            <input class="border border-warning rounded-pill" type="text" placeholder="Search" name="search">
-            <input type="submit" value="Search">
-        </form>
-        <button class="btn btn-info">
-            <a href="/customers?action=create" style="color:black;">Create Customer</a>
+
+<%--    HOME--%>
+        <button class="btn btn-danger" onclick="window.location.href='/home'">
+            <img src="home/img/house-door.svg" style="height: 25px; width: 25px">
         </button>
+<%--    CREATE--%>
+        <button class="btn btn-info" onclick="window.location.href='/customers?action=create'">
+            <img src="home/img/person_add.svg" style="height: 25px; width: 25px">
+        </button>
+<%--    BACK--%>
+        <button class="btn btn-success" onclick="window.location.href='/customers'">
+            <img src="home/img/list.svg" style="height: 25px; width: 25px">
+        </button>
+        <form action="/customers?action=search" method="get">
+            <input name="action" type="hidden" value="search">
+            <label>Find User by Name
+                <input name="customer_name" type="text" class="border border-warning rounded-pill">
+            </label>
+            <label>Find User by Gender
+                <input name="customer_gender" type="text" class="border border-warning rounded-pill">
+            </label>
+            <label>Find User by Address
+                <input name="customer_address" type="text" class="border border-warning rounded-pill">
+            </label>
+            <label>Find User by Email
+                <input name="customer_email" type="text" class="border border-warning rounded-pill">
+            </label>
+            <%--        <input type="submit" value="Tìm kiếm" class="btn btn-success">--%>
+            <button type="submit" class="btn btn-warning">
+                <img src="home/img/search.svg">Tìm kiếm
+            </button>
+        </form>
         <table class="table table-striped table-bordered" id="tableCustomer">
             <thead>
             <tr>
@@ -70,14 +95,16 @@
                             <a style="color: black"
                                href="/customers?action=edit&customer_id=${customer.customer_id}">Edit</a>
                         </button>
-                                                    <button class="btn btn-danger">
-                                                        <a style="color: black"
-                                                           href="/customers?action=delete&id=${customer.customer_id}">Delete</a>
-                                                    </button>
-<%--                        <button type="button" class="btn btn-danger" onclick="setValueForm('${customer.customer_id}')"--%>
-<%--                                data-toggle="modal" data-target="#modalDelete">--%>
-<%--                            Xoá--%>
-<%--                        </button>--%>
+                        <button class="btn btn-danger">
+                            <a style="color: black"
+                               href="/customers?action=delete&customerDelete=${customer.customer_id}">Delete</a>
+                        </button>
+
+                            <%--                                                    button modal--%>
+                            <%--                        <button type="button" class="btn btn-danger" onclick="setValueForm('${customer.customer_id}')"--%>
+                            <%--                                data-toggle="modal" data-target="#modalDelete">--%>
+                            <%--                            Delete--%>
+                            <%--                        </button>--%>
                     </td>
                 </tr>
             </c:forEach>
@@ -85,29 +112,28 @@
         </table>
 
         <%--        modal delete--%>
-<%--        <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
-<%--            <div class="modal-dialog">--%>
-<%--                <div class="modal-content">--%>
-<%--                    <form method="get" action="/customers?action=delete">--%>
-<%--                        <div class="modal-header">--%>
-<%--                            <h5 class="modal-title" id="exampleModalLabel">Thông Báo</h5>--%>
-<%--                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-<%--                                <span aria-hidden="true">&times;</span>--%>
-<%--                            </button>--%>
-<%--                        </div>--%>
-<%--                        <div class="modal-body">--%>
-<%--                            <input name="idDelete" id="idDelete" hidden>--%>
-<%--                            Bạn có chắc muốn xoá ?--%>
-<%--                        </div>--%>
-<%--                        <div class="modal-footer">--%>
-<%--                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>--%>
-<%--                            <button type="submit" class="btn btn-danger">Xoá</button>--%>
-<%--                        </div>--%>
-<%--                    </form>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        <%--        <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
+        <%--            <div class="modal-dialog">--%>
+        <%--                <div class="modal-content">--%>
+        <%--                    <form method="get" action="/customers?action=delete">--%>
+        <%--                        <div class="modal-header">--%>
+        <%--                            <h5 class="modal-title" id="exampleModalLabel">Thông Báo</h5>--%>
+        <%--                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
+        <%--                        </div>--%>
+        <%--                        <div class="modal-body">--%>
+        <%--                            <input name="customerDelete" id="customerDelete" hidden>--%>
+        <%--                            Bạn có chắc muốn xoá ?--%>
+        <%--                        </div>--%>
+        <%--                        <div class="modal-footer">--%>
+        <%--                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--%>
+        <%--                            <button type="submit" class="btn btn-danger">Delete</button>--%>
+        <%--                        </div>--%>
+        <%--                    </form>--%>
+        <%--                </div>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
     </div>
+</div>
 </div>
 <script src="/assert/jquery/jquery-3.5.1.min.js"></script>
 <script src="/assert/bootstrap413/js/popper.min.js"></script>
@@ -125,8 +151,8 @@
     });
 </script>
 <%--<script>--%>
-<%--    function setValueForm(idDelete) {--%>
-<%--        document.getElementById("idDelete").value = idDelete;--%>
+<%--    function setValueForm(customerDelete) {--%>
+<%--        document.getElementById("customerDelete").value = customerDelete;--%>
 <%--    }--%>
 <%--</script>--%>
 </body>

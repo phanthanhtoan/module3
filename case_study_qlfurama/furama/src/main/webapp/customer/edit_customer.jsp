@@ -59,7 +59,7 @@
                     </div>
                     <div>
                         <lable for="customer_email">Email: </lable>
-                        <input type="text" class="form-control" name="customer_email" value="${customer.customer_email}">
+                        <input type="email" class="form-control" name="customer_email" value="${customer.customer_email}">
                     </div>
                     <div>
                         <lable for="customer_address">Địa chỉ: </lable>

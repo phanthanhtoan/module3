@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
     <title>Create Service</title>
@@ -40,10 +42,22 @@
                         </div>
                         <div>
                             <lable for="service_type_id">Mã loại dịch vụ: </lable>
-                            <input class="form-control" type="text" name="service_type_id" required>
+<%--                            <input class="form-control" type="text" name="service_type_id" required>--%>
+                            <select class="form-control" id="service_type_id" name="service_type_id" required>
+                                <c:forEach var="serviceTypeList" items="${serviceTypeList}">
+                                    <c:choose>
+                                        <c:when test="${serviceTypeList.service_type_id == service.service_type_id}">
+                                            <option value="${serviceTypeList.service_type_name}">${serviceTypeList.service_type_name}</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option value="${serviceTypeList.service_type_id}">${serviceTypeList.service_type_name}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div>
-                            <lable for="standard_room">Tiêu chuẩn phòng</lable>
+                            <lable for="standard_room">Tiêu chuẩn phòng: </lable>
                             <input class="form-control" type="text" name="standard_room" required>
                         </div>
                         <div>

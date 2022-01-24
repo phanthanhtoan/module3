@@ -14,4 +14,6 @@ public interface ICustomerRepository {
     boolean deleteCustomer(int customer_id);
 
     void editCustomer(Customer customer);
+    List<Customer> findByNameAndGenderAndAddressAndEmail(String name, String gender,  String address, String email);
+
 }

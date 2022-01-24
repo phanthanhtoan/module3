@@ -47,6 +47,10 @@ public class CustomerServiceImpl implements ICustomerService {
         return customerRepository.deleteCustomer(customer_id);
     }
 
+    @Override
+    public List<Customer> findByNameAndGenderAndAddressAndEmail(String name, String gender, String address, String email) {
+        return customerRepository.findByNameAndGenderAndAddressAndEmail(name,gender,address,email);
+    }
 
 
 }

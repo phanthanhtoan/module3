@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "EmployeeController", value = {"/employees", ""})
+@WebServlet(name = "EmployeeController", value = {"/employees"})
 public class EmployeeController extends HttpServlet {
 
     private IEmployeeService employeeService = new EmployeeServiceImpl();

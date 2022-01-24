@@ -37,7 +37,7 @@ public class CustomerController extends HttpServlet {
                 break;
             case "edit":
                 try {
-                    editCustomer(request,response);
+                    editCustomer(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -58,8 +58,8 @@ public class CustomerController extends HttpServlet {
         String customer_phone = request.getParameter("customer_phone");
         String customer_email = request.getParameter("customer_email");
         String customer_address = request.getParameter("customer_address");
-        Customer customer = new Customer(customer_id,customer_type_id,customer_name,customer_birthday,customer_gender,customer_id_card,
-                customer_phone,customer_email ,customer_address);
+        Customer customer = new Customer(customer_id, customer_type_id, customer_name, customer_birthday, customer_gender, customer_id_card,
+                customer_phone, customer_email, customer_address);
         customerService.editCustomer(customer);
         request.setAttribute("customerList", customerService.findAll());
         request.setAttribute("customerTypeList", customerTypeService.findAll());
@@ -78,6 +78,7 @@ public class CustomerController extends HttpServlet {
         String customer_address = request.getParameter("customer_address");
         Customer customer = new Customer(customer_id, customer_type_id, customer_name, customer_birthday, customer_gender, customer_id_card,
                 customer_phone, customer_email, customer_address);
+
         if (customerService.createCustomer(customer)) {
             request.setAttribute("message", "Thêm mới thành công");
             List<Customer> customerList = customerService.findAll();
@@ -102,7 +103,7 @@ public class CustomerController extends HttpServlet {
                 break;
             case "edit":
                 try {
-                    showEditFormCustomer(request,response);
+                    showEditFormCustomer(request, response);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -111,6 +112,7 @@ public class CustomerController extends HttpServlet {
                 showFormDeleteCustomer(request, response);
                 break;
             case "search":
+                showSearchCustomer(request, response);
                 break;
             default: {
                 try {
@@ -122,6 +124,25 @@ public class CustomerController extends HttpServlet {
         }
     }
 
+    private void showSearchCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String name = request.getParameter("customer_name");
+        String gender = request.getParameter("customer_gender");
+        String address = request.getParameter("customer_address");
+        String email = request.getParameter("customer_email");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer/list_customer.jsp");
+        request.setAttribute("customerList", customerService.findByNameAndGenderAndAddressAndEmail(name,gender,address,email));
+        request.setAttribute("customerTypeList", customerTypeService.findAll());
+//        response.sendRedirect("/customers");
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     private void showEditFormCustomer(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         String customer_id = request.getParameter("customer_id");
         Customer customer = customerService.findById(Integer.parseInt(customer_id));
@@ -131,8 +152,8 @@ public class CustomerController extends HttpServlet {
     }
 
     private void showFormDeleteCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        customerService.deleteCustomer(id);
+        int customer_id = Integer.parseInt(request.getParameter("customerDelete"));
+        customerService.deleteCustomer(customer_id);
         List<Customer> customerList = null;
         try {
             customerList = customerService.findAll();
@@ -156,7 +177,7 @@ public class CustomerController extends HttpServlet {
 //        request.setAttribute("customerList", customerList);
         request.setAttribute("customerList", customerService.findAll());
         request.setAttribute("customerTypeList", customerTypeService.findAll());
-        requestDispatcher.forward(request,response);
+        requestDispatcher.forward(request, response);
 //        request.getRequestDispatcher("customer/list_customer.jsp").forward(request, response);
     }
 }

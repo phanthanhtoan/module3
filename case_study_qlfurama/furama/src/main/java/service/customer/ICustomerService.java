@@ -13,4 +13,5 @@ public interface ICustomerService {
     void editCustomer(Customer customer) throws SQLException;
     boolean createCustomer(Customer customer) throws SQLException;
     boolean deleteCustomer(int customer_id);
+    List<Customer> findByNameAndGenderAndAddressAndEmail(String name, String gender,  String address, String email);
 }
